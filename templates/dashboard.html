@@ -265,13 +265,15 @@
     <script>
         // JavaScript functions
         function closeTab() {
-            window.close();
-        }
-
-        function handleReviewSubmission(event) {
-            event.preventDefault();
-            // Form handling logic here
-        }
+    // Try to close the window if it was opened by the script
+    if (window.close) {
+        window.close();
+    } else {
+        // If closing the window fails, redirect to a goodbye page
+        alert("Closing the tab is not allowed by the browser. Redirecting to the logout page.");
+        window.location.href = "{{ url_for('logout') }}";
+    }
+}
     </script>
 </body>
 
