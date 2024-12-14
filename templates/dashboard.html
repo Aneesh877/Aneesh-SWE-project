@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* General Reset  */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.5;
+            padding-top: 100px; /* To account for the fixed header */
+        }
+
+        /* ========== Header Styles ========== */
+        header {
+            width: 100%;
+            background: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        /* ========== Navbar Layout ========== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Logo styles - Adjust logo next to text */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Logo text styles */
+        .logo h2 {
+            font-size: 24px;
+            color: #9c27b0; /* Purple color for "Ani Movies&Games" */
+            font-weight: bold;
+        }
+
+        /* Navigation links */
+        .links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .links a {
+            color: #00bcd4;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* ========== Button Styles ========== */
+        button.login-btn,
+        button.logout-btn {
+            background-color: #00bcd4;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        button.login-btn:hover,
+        button.logout-btn:hover {
+            background-color: #0097a7;
+        }
+
+        button.close-btn {
+            background-color: #e53935;
+            color: #fff;
+        }
+
+        button.close-btn:hover {
+            background-color: #c62828;
+        }
+
+        /* ========== Forms Section ========== */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 50px;
+            margin-top: 150px; /* Spacing to move forms down below the header */
+        }
+
+        /* Form box styles */
+        .form-box {
+            background-color: #1f1f1f;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 420px;
+            transition: transform 0.3s;
+        }
+
+        .form-box:hover {
+            transform: translateY(-5px); /* Hover effect to make form pop */
+        }
+
+        .form-box h2 {
+            color: #00bcd4;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .form-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field label {
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .input-field input {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            background-color: #333;
+            border: 1px solid #444;
+            color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        .input-field input:focus {
+            border-color: #00bcd4;
+            outline: none;
+        }
+
+        /* Submit button styles with margin to push it lower */
+        button[type="submit"] {
+            background-color: #00bcd4;
+            color: #fff;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            margin-top: 20px; /* Added margin to make button lower */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0097a7;
+        }
+
+        .bottom-link {
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .bottom-link a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        .bottom-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== Additional Dashboard Styling ========== */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #00bcd4;
+        }
+
+        a {
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto;
+            color: #00bcd4;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h2>Dashboard</h2>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <h1>Hello, you are logged in.</h1>
+            <a href="{{ url_for('logout') }}">Press here to logout</a>
+        </div>
+    </div>
+</body>
+
+</html>
