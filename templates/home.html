@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Ani Movies and Games</title>
     <style>
         /* General Reset  */
         * {
@@ -46,6 +46,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
 
         .logo h2 {
@@ -89,12 +95,13 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <h2>Home</h2>
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo">
+                <h2>Home Page</h2>
             </div>
         </div>
     </header>
     <div class="container">
-        <h1>Login Authentication System in Flask</h1>
+        <h1>Welcome To Ani Movies and Games Review</h1>
         <a href="{{ url_for('login') }}">Login Page</a>
         <a href="{{ url_for('register') }}">Register Page</a>
     </div>
